@@ -3,7 +3,7 @@
 ##########################################################################
 ## VARIABLES
 #
-ORG 	      = https://github.com/HSUPipeline
+ORG 	    = https://github.com/HSUPipeline
 SITE        = HSUPipeline.github.io
 OUTPUTS     = outputs
 
