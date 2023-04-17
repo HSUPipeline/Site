@@ -1,0 +1,9 @@
+title: 'HSUPipeline'
+description: 'A pipeline for processing and analyzing single-unit neural data from human subjects.'
+
+remote_theme: hydecorp/hydejack
+
+author:
+  social:
+    github: HSUPipeline
+    twitter: TomDonoghue
