@@ -1,4 +1,4 @@
-"""Prepare the OpenLists site."""
+"""Prepare the HSUPipeline site."""
 
 import os
 from pathlib import Path
@@ -28,6 +28,11 @@ FOLDER = Path('outputs')
 ###################################################################################################
 
 def main():
+    """Main function to manage site creation."""
+
+    # Check for and create (if missing) outputs folder
+    if not os.path.exists(FOLDER):
+        os.mkdir(FOLDER)
 
     # Process index file
     os.system(CLONE_COMMAND.format('Overview'))
@@ -37,7 +42,17 @@ def main():
 
 
 def update_file(filename, add_lines, label):
-    """Helper function to update file contents."""
+    """Helper function to update file contents.
+
+    Parameters
+    ----------
+    filename : str or Path
+        Name of the file to load and update.
+    add_lines : list of str
+        Lines to add to the file.
+    label : str
+        Label to add into the header information.
+    """
 
     add_lines = deepcopy(add_lines)
 
