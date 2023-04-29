@@ -12,11 +12,11 @@ menu:
   - title:  Home
     url:    /
   - title:  Templates
-    url:    /Templates/
+    url:    /templates/
   - title:  Projects
-    url:    /Projects/
+    url:    /projects/
   - title:  CodeMap
-    url:    /CodeMap/
+    url:    /codemap/
   - title:  convnwb
     url:    /convnwb
   - title:  spiketools
