@@ -7,3 +7,17 @@ author:
   social:
     github: HSUPipeline
     twitter: TomDonoghue
+
+menu:
+  - title:  Home
+    url:    /
+  - title:  Templates
+    url:    /Templates/
+  - title:  Projects
+    url:    /Projects/
+  - title:  CodeMap
+    url:    /CodeMap/
+  - title:  convnwb
+    url:    /convnwb
+  - title:  spiketools
+    url:    /spiketools
