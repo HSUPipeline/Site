@@ -20,6 +20,7 @@ ADD_LINES = [
     '---\n',
     'title: {}\n',
     'layout: page\n',
+    'permalink: /{}/\n',
     '---\n',
     '\n'
 ]
@@ -40,6 +41,7 @@ def main():
     # Process files to create webpage
     os.system(CLONE_COMMAND.format(REPO))
     create_page(REPO, 'README.md', 'index.md', 'HSUPipeline')
+    drop_lines(FOLDER / 'index.md', ['permalink'])
     create_page(REPO, 'Templates.md', 'templates.md', 'Templates')
     create_page(REPO, 'Projects.md', 'projects.md', 'Projects')
     create_page(REPO, 'CodeMap.md', 'codemap.md', 'CodeMap')
@@ -88,6 +90,7 @@ def update_file(filename, add_lines, label):
 
     # Add in header information
     add_lines[1] = add_lines[1].format(label)
+    add_lines[3] = add_lines[3].format(label.lower())
 
     # Add header lines
     for line in reversed(add_lines):
@@ -95,6 +98,35 @@ def update_file(filename, add_lines, label):
 
     with open(filename, 'w') as file:
         file.writelines(contents)
+
+
+def drop_lines(filename, lines_to_drop):
+    """Helper function to drop lines from files.
+
+    Parameters
+    ----------
+    filename : str or Path
+        Name of the file to load and update.
+    lines_to_drop : list of str
+        Lines to drop from the file.
+    """
+
+    with open(filename, 'r') as file:
+        contents = file.readlines()
+
+    output = []
+    for line in contents:
+
+        dropped = False
+        for drop in lines_to_drop:
+            if drop in line:
+                dropped = True
+                break
+        if not dropped:
+            output.append(line)
+
+    with open(filename, 'w') as file:
+        file.writelines(output)
 
 
 if __name__ == "__main__":

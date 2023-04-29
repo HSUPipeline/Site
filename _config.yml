@@ -13,10 +13,10 @@ menu:
     url:    /
   - title:  Templates
     url:    /templates/
-  - title:  Projects
-    url:    /projects/
   - title:  CodeMap
     url:    /codemap/
+  - title:  Projects
+    url:    /projects/
   - title:  convnwb
     url:    /convnwb
   - title:  spiketools
