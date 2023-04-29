@@ -12,6 +12,9 @@ from shutil import copyfile
 CLONE_COMMAND = 'git clone https://github.com/HSUPipeline/{}'
 RM_COMMAND = 'rm -rf {}'
 
+# Define repo(s) to copy from
+REPO = 'Overview'
+
 # Define what to add to the files
 ADD_LINES = [
     '---\n',
@@ -34,11 +37,32 @@ def main():
     if not os.path.exists(FOLDER):
         os.mkdir(FOLDER)
 
-    # Process index file
-    os.system(CLONE_COMMAND.format('Overview'))
-    copyfile(Path('Overview') / 'README.md', FOLDER / 'index.md')
-    update_file(FOLDER / 'index.md', ADD_LINES, 'HSUPipeline')
-    os.system(RM_COMMAND.format('Overview'))
+    # Process files to create webpage
+    os.system(CLONE_COMMAND.format(REPO))
+    create_page(REPO, 'README.md', 'index.md', 'HSUPipeline')
+    create_page(REPO, 'Templates.md', 'templates.md', 'Templates')
+    create_page(REPO, 'Projects.md', 'projects.md', 'Projects')
+    create_page(REPO, 'CodeMap.md', 'codemap.md', 'CodeMap')
+    os.system(RM_COMMAND.format(REPO))
+
+
+def create_page(repo, file_name, page_name, label):
+    """Create web page(s) by cloning and copying from a repository.
+
+    Parameter
+    ---------
+    repo : str
+        Repository name.
+    file_name  : str or list of str
+        File name to copy.
+    page_name : str or list of str
+        Name to give the webpage.
+    label : str or list of str
+        Label to add into the header information.
+    """
+
+    copyfile(Path(repo) / file_name, FOLDER / page_name)
+    update_file(FOLDER / page_name, ADD_LINES, label)
 
 
 def update_file(filename, add_lines, label):
