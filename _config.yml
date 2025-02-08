@@ -6,7 +6,6 @@ remote_theme: hydecorp/hydejack
 author:
   social:
     github: HSUPipeline
-    twitter: TomDonoghue
 
 menu:
   - title:  Home
